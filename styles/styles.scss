@@ -25,7 +25,7 @@ $radius-16px: functions.to-rem(16px);
 $radius-36px: functions.to-rem(36px);
 
 $phone-width: functions.to-rem(600px);
-$desktop-width: functions.to-rem(960px);
+$tablet-width: functions.to-rem(960px);
 
 @mixin tablet-and-up {
   @media (min-width: $phone-width) {
@@ -34,7 +34,7 @@ $desktop-width: functions.to-rem(960px);
 }
 
 @mixin desktop-and-up {
-  @media (min-width: $desktop-width) {
+  @media (min-width: $tablet-width) {
     @content
   }
 }
@@ -131,6 +131,7 @@ body {
   }
 
   @include desktop-and-up {
+    padding: $space-24px;
     max-width: 900px;
     flex-direction: row-reverse;
   }
@@ -151,7 +152,8 @@ body {
   }
 
   @include desktop-and-up {
-    padding: $space-48px $space-48px 0 0;
+    padding: $space-40px $space-48px 0 $space-48px;
+    row-gap: 0;
   }
 }
 
@@ -182,6 +184,10 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: $space-24px;
+
+  @include desktop-and-up {
+    row-gap: $space-16px;
+  }
 }
 
 #cardContentHeaderList {

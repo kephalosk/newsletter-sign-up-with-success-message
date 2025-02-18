@@ -57,6 +57,7 @@ body {
 }
 @media (min-width: 60rem) {
   #card {
+    padding: 1.5rem;
     max-width: 900px;
     flex-direction: row-reverse;
   }
@@ -78,7 +79,8 @@ body {
 }
 @media (min-width: 60rem) {
   #cardContent {
-    padding: 3rem 3rem 0 0;
+    padding: 2.5rem 3rem 0 3rem;
+    row-gap: 0;
   }
 }
 
@@ -111,6 +113,11 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: 1.5rem;
+}
+@media (min-width: 60rem) {
+  #cardContentHeader {
+    row-gap: 1rem;
+  }
 }
 
 #cardContentHeaderList {
