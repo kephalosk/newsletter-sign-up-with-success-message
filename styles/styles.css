@@ -1,0 +1,260 @@
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#attribution {
+  font-size: 11px;
+  text-align: center;
+  color: #FFFFFF;
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
+}
+
+#attribution a {
+  color: hsl(228, 45%, 66%);
+}
+
+body {
+  margin: 0;
+  background-color: #36384D;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#card {
+  background-color: #FFFFFF;
+  height: 100%;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+}
+#card.active {
+  display: flex;
+}
+
+#cardContent {
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+}
+
+#cardContentForm {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+}
+
+.cardContentFormButton {
+  border: 0;
+  border-radius: 8px;
+  background-color: #242742;
+  padding: 1rem;
+  color: #FFFFFF;
+  outline: none;
+  cursor: pointer;
+  transition: background-image 0.5s ease-out;
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+.cardContentFormButton:hover, .cardContentFormButton:focus-visible {
+  background-image: linear-gradient(to right, #FF6A3A, #FF527B);
+}
+
+#cardContentHeader {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+}
+
+#cardContentHeaderList {
+  padding: 0;
+  list-style: none;
+  display: block;
+}
+
+.cardContentHeaderListItem {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  color: #242742;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+
+.cardContentHeaderListItem img {
+  margin-right: 1rem;
+  width: 20px;
+  height: 20px;
+}
+
+.cardContentHeaderListItemText {
+  display: block;
+}
+
+#cardContentHeaderText {
+  color: #242742;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+
+#cardContentHeaderTitle {
+  color: #242742;
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+@media (min-width: 37.5rem) {
+  #cardContentHeaderTitle {
+    font-size: 56px;
+  }
+}
+
+#cardImage {
+  border-radius: 0 0 1rem 1rem;
+  width: 100%;
+}
+
+#cardSuccess {
+  background-color: #FFFFFF;
+  padding: 12.125rem 1.5rem 4rem 1.5rem;
+  height: 100vh;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+}
+#cardSuccess.active {
+  display: flex;
+}
+
+#cardSuccessContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#cardSuccessContentImage {
+  height: 64px;
+  width: 64px;
+}
+
+#cardSuccessContentText {
+  flex-grow: 1;
+  color: #242742;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+
+#cardSuccessContentTextEmail {
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+
+#cardSuccessContentTitle {
+  color: #242742;
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+@media (min-width: 37.5rem) {
+  #cardSuccessContentTitle {
+    font-size: 56px;
+  }
+}
+
+h1, p {
+  margin: 0;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+.inputField {
+  border: 1px solid #949494;
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  color: #242742;
+  outline: none;
+}
+.inputField:focus {
+  border: 1px solid #242742;
+}
+.inputField:focus-visible {
+  border: 1px solid #242742;
+}
+.inputField.error {
+  border: 1px solid #FF6155;
+  background-color: #FFE7E6;
+  color: #FF6155;
+}
+.inputField.error::placeholder {
+  color: #FF6155;
+}
+
+.inputField::placeholder {
+  color: #949494;
+}
+
+.inputHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inputHeaderEmail {
+  flex-grow: 1;
+  color: #242742;
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+
+.inputHeaderError {
+  display: none;
+  color: #FF6155;
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+.inputHeaderError.error {
+  display: block;
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,305 @@
+@use 'functions';
+
+$color-white: #FFFFFF;
+$color-grey: #949494;
+$color-blue-800: #242742;
+$color-blue-700: #36384D;
+$color-red: #FF6155;
+$color-red-100: #FFE7E6;
+$color-gradient-left: #FF6A3A;
+$color-gradient-right: #FF527B;
+$color-attribution: hsl(228, 45%, 66%);
+
+$space-8px: functions.to-rem(8px);
+$space-16px: functions.to-rem(16px);
+$space-24px: functions.to-rem(24px);
+$space-32px: functions.to-rem(32px);
+$space-40px: functions.to-rem(40px);
+$space-48px: functions.to-rem(48px);
+$space-64px: functions.to-rem(64px);
+$space-72px: functions.to-rem(72px);
+$space-104px: functions.to-rem(194px);
+
+$radius-8px: functions.to-rem(8px);
+$radius-16px: functions.to-rem(16px);
+$radius-36px: functions.to-rem(36px);
+
+$phone-width: functions.to-rem(600px);
+$desktop-width: functions.to-rem(960px);
+
+@mixin tablet-and-up {
+  @media (min-width: $phone-width) {
+    @content
+  }
+}
+
+@mixin desktop-and-up {
+  @media (min-width: $desktop-width) {
+    @content
+  }
+}
+
+@mixin text-preset-1 {
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0;
+
+  @include tablet-and-up {
+    font-size: 56px;
+  }
+}
+
+@mixin text-preset-2 {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+
+@mixin text-preset-2-bold {
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+
+@mixin text-preset-3 {
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#attribution {
+  font-size: 11px;
+  text-align: center;
+  color: $color-white;
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
+}
+
+#attribution a {
+  color: $color-attribution;
+}
+
+body {
+  margin: 0;
+  background-color: $color-blue-700;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#card {
+  background-color: $color-white;
+  height: 100%;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+
+  &.active {
+    display: flex;
+  }
+}
+
+#cardContent {
+  padding: $space-40px $space-24px;
+  display: flex;
+  flex-direction: column;
+  row-gap: $space-24px;
+}
+
+#cardContentForm {
+  display: flex;
+  flex-direction: column;
+  row-gap: $space-24px;
+}
+
+.cardContentFormButton {
+  border: 0;
+  border-radius: 8px;
+  background-color: $color-blue-800;
+  padding: $space-16px;
+  color: $color-white;
+  outline: none;
+  cursor: pointer;
+  transition: background-image 0.5s ease-out;
+
+  @include text-preset-2-bold;
+
+  &:hover, &:focus-visible {
+    background-image: linear-gradient(to right, $color-gradient-left, $color-gradient-right);
+  }
+}
+
+#cardContentHeader {
+  display: flex;
+  flex-direction: column;
+  row-gap: $space-24px;
+}
+
+#cardContentHeaderList {
+  padding: 0;
+  list-style: none;
+  display: block;
+}
+
+.cardContentHeaderListItem {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  color: $color-blue-800;
+
+  @include text-preset-2;
+}
+
+.cardContentHeaderListItem img {
+  margin-right: $space-16px;
+  width: 20px;
+  height: 20px;
+}
+
+.cardContentHeaderListItemText {
+  display: block;
+}
+
+#cardContentHeaderText {
+  color: $color-blue-800;
+
+  @include text-preset-2;
+}
+
+#cardContentHeaderTitle {
+  color: $color-blue-800;
+
+  @include text-preset-1;
+}
+
+#cardImage {
+  border-radius: 0 0 $radius-16px $radius-16px;
+  width: 100%;
+}
+
+#cardSuccess {
+  background-color: $color-white;
+  padding: $space-104px $space-24px $space-64px $space-24px;
+  height: 100vh;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+
+  &.active {
+    display: flex;
+  }
+}
+
+#cardSuccessContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#cardSuccessContentImage {
+  height: 64px;
+  width: 64px;
+}
+
+#cardSuccessContentText {
+  flex-grow: 1;
+  color: $color-blue-800;
+
+  @include text-preset-2;
+}
+
+#cardSuccessContentTextEmail {
+  @include text-preset-2-bold;
+}
+
+#cardSuccessContentTitle {
+  color: $color-blue-800;
+
+  @include text-preset-1;
+}
+
+h1, p {
+  margin: 0;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  row-gap: $space-8px;
+}
+
+.inputField {
+  border: 1px solid $color-grey;
+  border-radius: $radius-8px;
+  padding: $space-16px $space-24px;
+  color: $color-blue-800;
+  outline: none;
+
+  &:focus {
+    border: 1px solid $color-blue-800;
+  }
+
+  &:focus-visible {
+    border: 1px solid $color-blue-800;
+  }
+
+  &.error {
+    border: 1px solid $color-red;
+    background-color: $color-red-100;
+    color: $color-red;
+
+    &::placeholder{
+      color: $color-red;
+    }
+  }
+}
+
+.inputField::placeholder {
+  color: $color-grey;
+}
+
+.inputHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inputHeaderEmail {
+  flex-grow: 1;
+  color: $color-blue-800;
+
+  @include text-preset-3;
+}
+
+.inputHeaderError {
+  display: none;
+  color: $color-red;
+
+  @include text-preset-3;
+
+  &.error {
+    display: block;
+  }
+}
