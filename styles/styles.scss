@@ -80,10 +80,16 @@ $desktop-width: functions.to-rem(960px);
 }
 
 #app {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @include tablet-and-up {
+    padding: $space-72px;
+  }
 }
 
 #attribution {
@@ -112,9 +118,22 @@ body {
 #card {
   background-color: $color-white;
   height: 100%;
+  max-width: 600px;
   width: 100%;
   display: none;
   flex-direction: column;
+
+  @include tablet-and-up {
+    box-shadow: 0 10px 30px 0 rgb($color-blue-800, 1);
+    border-radius: $radius-36px;
+    padding: $space-32px;
+    height: fit-content;
+  }
+
+  @include desktop-and-up {
+    max-width: 900px;
+    flex-direction: row-reverse;
+  }
 
   &.active {
     display: flex;
@@ -126,6 +145,14 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: $space-24px;
+
+  @include tablet-and-up {
+    padding: $space-40px 0 0 0;
+  }
+
+  @include desktop-and-up {
+    padding: $space-48px $space-48px 0 0;
+  }
 }
 
 #cardContentForm {
@@ -160,7 +187,9 @@ body {
 #cardContentHeaderList {
   padding: 0;
   list-style: none;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .cardContentHeaderListItem {
@@ -170,6 +199,10 @@ body {
   color: $color-blue-800;
 
   @include text-preset-2;
+
+  @include tablet-and-up {
+    align-items: center;
+  }
 }
 
 .cardContentHeaderListItem img {
@@ -180,6 +213,10 @@ body {
 
 .cardContentHeaderListItemText {
   display: block;
+
+  @include tablet-and-up {
+    line-height: 200%;
+  }
 }
 
 #cardContentHeaderText {
@@ -197,6 +234,10 @@ body {
 #cardImage {
   border-radius: 0 0 $radius-16px $radius-16px;
   width: 100%;
+
+  @include tablet-and-up {
+    border-radius: $radius-16px;
+  }
 }
 
 #cardSuccess {
@@ -206,6 +247,15 @@ body {
   width: 100%;
   display: none;
   flex-direction: column;
+  row-gap: $space-32px;
+
+  @include tablet-and-up {
+    box-shadow: 0 10px 30px 0 rgb($color-blue-800, 1);
+    border-radius: $radius-36px;
+    padding: $space-48px;
+    height: fit-content;
+    max-width: 500px;
+  }
 
   &.active {
     display: flex;
@@ -216,6 +266,8 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  row-gap: $space-24px;
 }
 
 #cardSuccessContentImage {
@@ -240,7 +292,7 @@ body {
   @include text-preset-1;
 }
 
-h1, p {
+h1, h2, p {
   margin: 0;
 }
 
@@ -270,7 +322,7 @@ h1, p {
     background-color: $color-red-100;
     color: $color-red;
 
-    &::placeholder{
+    &::placeholder {
       color: $color-red;
     }
   }

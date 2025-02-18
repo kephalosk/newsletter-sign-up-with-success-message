@@ -3,10 +3,17 @@
 }
 
 #app {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+@media (min-width: 37.5rem) {
+  #app {
+    padding: 4.5rem;
+  }
 }
 
 #attribution {
@@ -35,9 +42,24 @@ body {
 #card {
   background-color: #FFFFFF;
   height: 100%;
+  max-width: 600px;
   width: 100%;
   display: none;
   flex-direction: column;
+}
+@media (min-width: 37.5rem) {
+  #card {
+    box-shadow: 0 10px 30px 0 #242742;
+    border-radius: 2.25rem;
+    padding: 2rem;
+    height: fit-content;
+  }
+}
+@media (min-width: 60rem) {
+  #card {
+    max-width: 900px;
+    flex-direction: row-reverse;
+  }
 }
 #card.active {
   display: flex;
@@ -48,6 +70,16 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: 1.5rem;
+}
+@media (min-width: 37.5rem) {
+  #cardContent {
+    padding: 2.5rem 0 0 0;
+  }
+}
+@media (min-width: 60rem) {
+  #cardContent {
+    padding: 3rem 3rem 0 0;
+  }
 }
 
 #cardContentForm {
@@ -84,7 +116,9 @@ body {
 #cardContentHeaderList {
   padding: 0;
   list-style: none;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .cardContentHeaderListItem {
@@ -98,6 +132,11 @@ body {
   line-height: 150%;
   letter-spacing: 0;
 }
+@media (min-width: 37.5rem) {
+  .cardContentHeaderListItem {
+    align-items: center;
+  }
+}
 
 .cardContentHeaderListItem img {
   margin-right: 1rem;
@@ -107,6 +146,11 @@ body {
 
 .cardContentHeaderListItemText {
   display: block;
+}
+@media (min-width: 37.5rem) {
+  .cardContentHeaderListItemText {
+    line-height: 200%;
+  }
 }
 
 #cardContentHeaderText {
@@ -136,6 +180,11 @@ body {
   border-radius: 0 0 1rem 1rem;
   width: 100%;
 }
+@media (min-width: 37.5rem) {
+  #cardImage {
+    border-radius: 1rem;
+  }
+}
 
 #cardSuccess {
   background-color: #FFFFFF;
@@ -144,6 +193,16 @@ body {
   width: 100%;
   display: none;
   flex-direction: column;
+  row-gap: 2rem;
+}
+@media (min-width: 37.5rem) {
+  #cardSuccess {
+    box-shadow: 0 10px 30px 0 #242742;
+    border-radius: 2.25rem;
+    padding: 3rem;
+    height: fit-content;
+    max-width: 500px;
+  }
 }
 #cardSuccess.active {
   display: flex;
@@ -153,6 +212,8 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  row-gap: 1.5rem;
 }
 
 #cardSuccessContentImage {
@@ -192,7 +253,7 @@ body {
   }
 }
 
-h1, p {
+h1, h2, p {
   margin: 0;
 }
 

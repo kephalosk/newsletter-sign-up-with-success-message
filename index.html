@@ -11,8 +11,11 @@
     </head>
     <body>
         <main id="app">
-            <section id="card" class="active">
-                <img id="cardImage" src="./assets/images/illustration-sign-up-mobile.svg" alt="sign up image" aria-hidden="true"/>
+            <section id="card" >
+                <picture>
+                    <source srcset="assets/images/illustration-sign-up-desktop.svg" media="(min-width: 960px)">
+                    <img id="cardImage" src="./assets/images/illustration-sign-up-mobile.svg" alt="sign up image" aria-hidden="true"/>
+                </picture>
                 <div id="cardContent">
                     <div id="cardContentHeader">
                         <h1 id="cardContentHeaderTitle">Stay updated!</h1>
@@ -35,7 +38,7 @@
                     </div>
                 </div>
             </section>
-            <section id="cardSuccess">
+            <section id="cardSuccess" class="active">
                 <div id="cardSuccessContent">
                     <img id="cardSuccessContentImage" src="./assets/images/icon-list.svg" alt="list icon" aria-hidden="true"/>
                     <h2 id="cardSuccessContentTitle">Thanks for subscribing!</h2>
