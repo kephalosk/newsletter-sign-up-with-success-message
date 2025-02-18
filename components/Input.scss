@@ -1,0 +1,61 @@
+@use '../styles/styles';
+
+.input {
+  display: flex;
+  flex-direction: column;
+  row-gap: styles.$space-8px;
+}
+
+.inputField {
+  border: 1px solid styles.$color-grey;
+  border-radius: styles.$radius-8px;
+  padding: styles.$space-16px styles.$space-24px;
+  color: styles.$color-blue-800;
+  outline: none;
+
+  &:focus {
+    border: 1px solid styles.$color-blue-800;
+  }
+
+  &:focus-visible {
+    border: 1px solid styles.$color-blue-800;
+  }
+
+  &.error {
+    border: 1px solid styles.$color-red;
+    background-color: styles.$color-red-100;
+    color: styles.$color-red;
+
+    &::placeholder {
+      color: styles.$color-red;
+    }
+  }
+}
+
+.inputField::placeholder {
+  color: styles.$color-grey;
+}
+
+.inputHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inputHeaderEmail {
+  flex-grow: 1;
+  color: styles.$color-blue-800;
+
+  @include styles.text-preset-3;
+}
+
+.inputHeaderError {
+  display: none;
+  color: styles.$color-red;
+
+  @include styles.text-preset-3;
+
+  &.error {
+    display: block;
+  }
+}

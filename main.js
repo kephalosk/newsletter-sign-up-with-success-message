@@ -1,40 +1,88 @@
-fetch('./components/Input.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('input-container').innerHTML = data;
+initializeApp();
 
-        const inputField = document.querySelector('.inputField');
-        const errorMessage = document.querySelector('.inputHeaderError');
-        inputField.addEventListener('keydown', () => {
-            inputField.classList.remove('error');
-            errorMessage.classList.remove('error');
+function initializeApp() {
+    loadInputComponentAndAddEventListeners();
+}
+
+function loadInputComponentAndAddEventListeners(){
+    fetch('./components/Input.html')
+        .then(response => response.text())
+        .then(data => {
+            setUpInputContainer(data);
+            addKeyDownEventListenerToInput();
+            addClickEventListenerToSubmitButton();
+            addClickEventListenerToDismissButton();
         })
+        .catch(error => console.error('Error while fetching Input component:', error));
+}
 
-        const emailSuccess = document.getElementById('cardSuccessContentTextEmail');
-        const card = document.getElementById('card');
-        const cardSuccess = document.getElementById('cardSuccess');
-        const buttonSubmit = document.getElementById('cardContentFormButton');
-        buttonSubmit.addEventListener('click', () => {
-            const email = inputField.value;
-            const isValid = isValidEmail(email);
-            if (isValid) {
-                emailSuccess.innerHTML = email;
-                card.classList.remove('active');
-                cardSuccess.classList.add('active');
-            } else {
-                inputField.classList.add('error');
-                errorMessage.classList.add('error');
-            }
-        });
+function setUpInputContainer(data) {
+    document.getElementById('input-container').innerHTML = data;
+}
 
-        const buttonDismiss = document.getElementById('cardSuccessButton');
-        buttonDismiss.addEventListener('click', () => {
-            inputField.value = '';
-            card.classList.add('active');
-            cardSuccess.classList.remove('active');
-        });
+function addKeyDownEventListenerToInput() {
+    const inputField = document.querySelector('.inputField');
+    inputField.addEventListener('keydown', () => {
+        setHasError(false);
     })
-    .catch(error => console.error('Fehler beim Laden der HTML-Komponente:', error));
+}
+
+function setHasError(hasError) {
+    const inputField = document.querySelector('.inputField');
+    const errorMessage = document.querySelector('.inputHeaderError');
+
+    if (hasError) {
+        inputField.classList.add('error');
+        errorMessage.classList.add('error');
+    } else {
+        inputField.classList.remove('error');
+        errorMessage.classList.remove('error');
+    }
+}
+
+function addClickEventListenerToSubmitButton() {
+    const inputField = document.querySelector('.inputField');
+    const buttonSubmit = document.getElementById('cardContentFormButton');
+
+    buttonSubmit.addEventListener('click', () => {
+        const email = inputField.value;
+        const hasValidEmail = isValidEmail(email);
+
+        if (hasValidEmail) {
+            handleSubmit(email);
+        } else {
+            setHasError(true);
+        }
+    });
+}
+
+function handleSubmit(email) {
+    const emailSuccess = document.getElementById('cardSuccessContentTextEmail');
+    const card = document.getElementById('card');
+    const cardSuccess = document.getElementById('cardSuccess');
+
+    emailSuccess.innerHTML = email;
+    card.classList.remove('active');
+    cardSuccess.classList.add('active');
+}
+
+function addClickEventListenerToDismissButton() {
+    const buttonDismiss = document.getElementById('cardSuccessButton');
+
+    buttonDismiss.addEventListener('click', () => {
+        handleDismiss();
+    });
+}
+
+function handleDismiss() {
+    const inputField = document.querySelector('.inputField');
+    const card = document.getElementById('card');
+    const cardSuccess = document.getElementById('cardSuccess');
+
+    inputField.value = '';
+    card.classList.add('active');
+    cardSuccess.classList.remove('active');
+}
 
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

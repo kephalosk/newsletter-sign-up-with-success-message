@@ -8,10 +8,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <script src="./main.js"></script>
         <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="components/Input.css">
     </head>
     <body>
         <main id="app">
-            <section id="card" >
+            <section id="card" class="active">
                 <picture>
                     <source srcset="assets/images/illustration-sign-up-desktop.svg" media="(min-width: 960px)">
                     <img id="cardImage" src="./assets/images/illustration-sign-up-mobile.svg" alt="sign up image" aria-hidden="true"/>
@@ -38,7 +39,7 @@
                     </div>
                 </div>
             </section>
-            <section id="cardSuccess" class="active">
+            <section id="cardSuccess">
                 <div id="cardSuccessContent">
                     <img id="cardSuccessContentImage" src="./assets/images/icon-list.svg" alt="list icon" aria-hidden="true"/>
                     <h2 id="cardSuccessContentTitle">Thanks for subscribing!</h2>
